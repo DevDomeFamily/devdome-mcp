@@ -1,0 +1,22 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.devdome/analytics",
+  "title": "DevDome Analytics",
+  "description": "Website traffic, bot reports, realtime visitors and site health for your DevDome sites",
+  "version": "1.0.0",
+  "websiteUrl": "https://devdome.com/docs/mcp/",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://analytics.devdome.com/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer YOUR_API_KEY - the ddk_ key from devdome.com, Account, API",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
