@@ -65,7 +65,7 @@ curl https://analytics.devdome.com/mcp \
 | Tool | What it returns |
 |---|---|
 | `list_sites` | Websites on the account with verification status |
-| `add_site` | Add a website, returns the tracking snippet |
+| `add_site` | Add a website, returns the verification file to upload |
 | `verify_site` | Verify ownership of a pending site (snippet or DNS TXT) |
 | `get_stats` | Visits, visitors, pageviews, outbound clicks, bots, CTR, bounce rate, session duration |
 | `get_timeseries` | Daily series of visits, visitors, pageviews, clicks and bots |
@@ -75,7 +75,7 @@ curl https://analytics.devdome.com/mcp \
 | `get_visitors` | Recent individual visits: entry page, path, country, device, human or bot |
 | `get_site_health` | Uptime, response time, TLS and domain checks, open incidents |
 
-Every tool takes `site` (the bare domain) where relevant, plus optional `days` or `from` and `to`. No window means the full retained history of your plan.
+Every reporting tool takes `site` (the bare domain); all but `get_realtime` and `get_site_health` take an optional `days`, and `get_stats`, `get_breakdown` and `get_visitors` also take `from` and `to`. No window means the full retained history of your plan.
 
 ## Example prompts
 
@@ -86,7 +86,7 @@ Every tool takes `site` (the bare domain) where relevant, plus optional `days` o
 
 ## Protocol
 
-Stateless JSON-RPC over streamable HTTP. Supported MCP revisions: 2025-11-25, 2025-06-18, 2025-03-26, 2024-11-05. Rate limit 60 requests per minute per key. CORS is open for `/mcp` and `/api/v1`.
+Stateless JSON-RPC over streamable HTTP. Supported MCP revisions: 2025-11-25, 2025-06-18, 2025-03-26, 2024-11-05. Rate limit 60 requests per minute per key, plus 60 per minute per IP address for calls that need a fresh key lookup. CORS is open for `/mcp` and `/api/v1`.
 
 ## About
 
